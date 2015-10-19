@@ -1,6 +1,8 @@
 $(function(){
   $('#pumpkin-form').on('submit', function(event){
     event.preventDefault();
+    var error = $('.error');
+    error.html('');
     var form = $(this);
 
     var red = form.find('#red').val();
@@ -13,9 +15,10 @@ $(function(){
 
     if((!red || !green || !blue) && !hex && !quick){
       //add error message for one must be filled out here
+      error.html('<p>Either red, green, AND blue, OR hex, OR the dropdown must have a value!</p>');
       return;
     } else {
-      if(red && green && blue){
+      if(red){
         var numCheck = /^[0-2]?[0-9]?[0-9]$/;
         var redMatch = numCheck.test(red);
         var greenMatch = numCheck.test(green);
@@ -31,6 +34,7 @@ $(function(){
 
         if(!redMatch || !greenMatch || !blueMatch){
           //add error message here about how red green and blue must be ints between 0 and 256
+          error.html('<p>Red, green, AND blue must be filled out together, with values between 0 and 255!</p>');
           return;
         }
       }
@@ -39,6 +43,7 @@ $(function(){
         var hexMatch = hexTest.test(hex);
         if(!hexMatch){
           //add error message here about how hex must be valid
+          error.html('<p>Hex must be a valid CSS hex value (#, followed by 3 or 6 0-9 or a-f characters, case insensitive)!</p>');
           return;
         }
       }
