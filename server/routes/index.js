@@ -25,7 +25,11 @@ router.post('/addColor', function(req, res){
   } else if (req.body.hex) {
     newColor = Color(req.body.hex);
   } else {
-    newColor = Color(req.body.color);
+    if(req.body.color == 'beccapurple'){
+      newColor = Color().rgb([102, 51, 153]);
+    } else {
+      newColor = Color(req.body.color);
+    }
   }
 
   var redString = newColor.red().toString(16);
