@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Front Porch Pumpkin</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>The Great (Front Porch) Pumpkin</h1>
+    <p>Hi there! Interested in changing the color of the Great (Front Porch) Pumpkin? Enter a value in one of the fields below to get started.</p>
+    <form id="pumpkin-form" class="pure-form pure-form-aligned">
+        <fieldset>
+            <div class="pure-control-group">
+                <label for="red">Red, Green, Blue values</label>
+                <input id="red" name="red" type="text" placeholder="0 - 255">
+                <input id="green" name="green" type="text" placeholder="0 - 255">
+                <input id="blue" name="blue" type="text" placeholder="0 - 255">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="password">Hex Value</label>
+                <input id="hex-value" name="hex" type="text" placeholder="#FFF or #80bd01">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="quick-pick">Quick Pick a Color</label>
+                <select id="quick-pick" name="color">
+                  <option value="">Pick a Color</option>
+                <% for(color in colors){ %>
+                  <option value="<%= color%>"><%-color%></option>
+                <% } %>
+                </select>
+            </div>
+
+            <div class="pure-controls">
+                <input type="hidden" name="_csrf" value="<%-csrfToken%>">
+                <button type="submit" class="pure-button pure-button-primary">Submit</button>
+            </div>
+        </fieldset>
+    </form>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="/javascripts/scripts.js"></script>
+  </body>
