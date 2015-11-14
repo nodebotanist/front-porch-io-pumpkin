@@ -59,7 +59,7 @@ router.post('/addColor', function(req, res){
 router.get('/', function(req, res, next) {
   console.log(req.csurf, req.csrfToken());
   res.render('index', { 
-    title: 'Front Porch Pumpkin!',
+    title: 'Nodebotanist\'s Rose Pin',
     colors:{
       aliceblue: [240,248,255],
       antiquewhite: [250,235,215],
